@@ -1,0 +1,64 @@
+(1) 
+Create: Involves the operation of adding new data or resources to a system. For instance, creating a new user profile in a database.
+
+Read: Involves retrieving or reading existing data or resources from a system. For example, fetching the details of a user from the database.
+
+Update: Refers to modifying or updating existing data or resources in a system. This can involve changing specific attributes or properties of an entity. For instance, updating a user's email address.
+
+Delete: Involves removing or deleting existing data or resources from a system. For example, removing a user's profile from the database.
+
+
+
+(2)
+Create (POST): Creating a new user
+
+Endpoint:
+POST /api/users
+
+Read (GET): Retrieving user information
+
+Endpoint to get all users:
+GET /api/users
+
+Endpoint to get a specific user by ID:
+GET /api/users/{id}
+
+Update (PUT/PATCH): Updating user information
+
+Endpoint using PUT to update entire user data:
+PUT /api/users/{id}
+
+Endpoint using PATCH to partially update user data:
+PATCH /api/users/{id}
+
+Delete (DELETE): Deleting a user
+
+Endpoint to delete a specific user by ID:
+DELETE /api/users/{id}
+
+
+
+(3) Difference between PUT and PATCH:
+
+PUT Method:
+
+Purpose: The PUT method is used to update an entire resource or replace it with a new representation of the resource.
+
+Usage: When you use PUT, you send the complete representation of the resource in the request payload to the specified URI. If the resource exists, it will be replaced entirely with the new representation sent in the request. If the resource doesn’t exist, PUT may create a new resource with the provided representation at the specified URI.
+
+Idempotent: PUT is idempotent, meaning that multiple identical requests should have the same effect as a single request. Repeated PUT requests with the same data should not create any additional changes.
+
+Example: If you have a user resource and perform a PUT request to update the user's details, you need to send all fields, including those not changing, in the request body.
+
+
+
+PATCH Method:
+
+Purpose: PATCH is used to apply partial modifications to a resource. It's used when you want to update specific attributes or fields within a resource without affecting the entire resource.
+
+Usage: When using PATCH, you send only the changes that need to be applied to the resource, not the complete representation. The server then applies these changes to the resource. PATCH requests are useful when you want to update only specific fields or properties of a resource while leaving other fields unchanged.
+
+Idempotent: PATCH is not strictly required to be idempotent, as it might have different effects on subsequent requests depending on the applied changes.
+
+Example: If you have a user resource and perform a PATCH request to update the user's email address, you only need to send the new email in the request body, leaving other fields untouched.
+
